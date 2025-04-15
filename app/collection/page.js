@@ -1,4 +1,4 @@
-import NavBar from '../navbar.js'
+import CollectionTable from '@/components/CollectionTable.js'
 
 export const metadata = {
     title: "Bookie - Collection"
@@ -8,8 +8,8 @@ export const metadata = {
 export default function Collection() {
     return (
         <> 
-            <NavBar />
-            <h1>Collection Page</h1>
+            <h1 className='font-sans font-bold text-4xl'>Book Diary - Your Collection</h1>
+            <CollectionTable />
         </>
     )
 }
