@@ -10,10 +10,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { usePathname } from 'next/navigation'
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-const pages = ['Collection', 'Admin']
+const pages = ['collection', 'admin']
 
 export default function NavBar()
 {
@@ -35,12 +36,12 @@ export default function NavBar()
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <LibraryBooksIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="#app-bar-with-responsive-menu"
+                        href="/collection"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -51,7 +52,7 @@ export default function NavBar()
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Bookie
                     </Typography>
         
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -83,12 +84,16 @@ export default function NavBar()
                         >
                             {pages.map((page) => (
                             <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
+                                <Typography sx={{ textAlign: 'center', textTransform: 'capitalize' }}>
+                                    <Link href={`/${page}`}>
+                                        {page}
+                                    </Link>
+                                </Typography>
                             </MenuItem>
                             ))}
                         </Menu>
                         </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <LibraryBooksIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -105,16 +110,18 @@ export default function NavBar()
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Bookie
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
                             key={page}
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
+                            sx={{ my: 2, color: 'white', display: 'block', textTransform: 'capitalize' }}
                             >
-                            {page}
+                                <Link href={`/${page}`}>
+                                    {page}
+                                </Link>
                             </Button>
                         ))}
                     </Box>
