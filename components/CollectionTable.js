@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
+import { Button } from '@mui/material';
 
 export default async function CollectionTable({ isAdmin = false }) {
     const book_data = await fetch("http://localhost:4000/collection")
@@ -30,6 +31,12 @@ export default async function CollectionTable({ isAdmin = false }) {
                             {table_rows.map((row) => (
                                 <TableCell sx={{fontWeight: 'bold'}}>{row}</TableCell>
                             ))}
+                            {isAdmin ? (
+                                <>
+                                    <TableCell align="center" sx={{fontWeight: 'bold'}}>Edit</TableCell>
+                                    <TableCell align="center" sx={{fontWeight: 'bold'}}>Delete</TableCell>
+                                </>
+                            ) : ''}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -49,7 +56,12 @@ export default async function CollectionTable({ isAdmin = false }) {
                                 <TableCell>{book.finished_book}</TableCell>
                                 <TableCell>{book.rating}</TableCell>
                                 <TableCell align='center'>{book.review}</TableCell>
-
+                                {isAdmin ? (
+                                    <>
+                                        <TableCell><Button variant="contained" sx={{backgroundColor: indigo[300]}}>Edit</Button></TableCell>
+                                        <TableCell><Button variant="contained" sx={{backgroundColor: indigo[300]}}>Delete</Button></TableCell>
+                                    </>
+                                ) : ''}
                             </TableRow>
                         ))}
                     </TableBody>
