@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { indigo, pink } from '@mui/material/colors';
+import styles from "./styles.modules.css"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -18,6 +20,7 @@ const pages = ['collection', 'admin']
 
 export default function NavBar()
 {
+    const pathname = usePathname()
     const [anchorElNav, setAnchorElNav] = React.useState(null);
   
     const handleOpenNavMenu = (event) => {
@@ -27,13 +30,9 @@ export default function NavBar()
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
-  
-    const handleCloseUserMenu = () => {
-      setAnchorElUser(null);
-    };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ backgroundColor: indigo[300]}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <LibraryBooksIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -84,7 +83,11 @@ export default function NavBar()
                         >
                             {pages.map((page) => (
                             <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography sx={{ textAlign: 'center', textTransform: 'capitalize' }}>
+                                <Typography sx={{ 
+                                        textAlign: 'center', 
+                                        textTransform: 'capitalize',
+                                        fontWeight: pathname === `/${page}` ? 'bold' : 'normal',
+                                        color: pathname === `/${page}` ? indigo[300]: '',                                    }}>
                                     <Link href={`/${page}`}>
                                         {page}
                                     </Link>
@@ -117,9 +120,19 @@ export default function NavBar()
                             <Button
                             key={page}
                             onClick={handleCloseNavMenu}
-                            sx={{ my: 2, color: 'white', display: 'block', textTransform: 'capitalize' }}
+                            sx={{ 
+                                my: 2, 
+                                color: 'white', 
+                                display: 'block', 
+                                textTransform: 'capitalize',
+                                fontWeight: pathname === `/${page}` ? 'bold' : 'normal',
+                                color: pathname === `/${page}` ? pink[100] : 'white',
+                            }}
                             >
-                                <Link href={`/${page}`}>
+                                <Link 
+                                    className={ pathname === `/${page}` ? styles.active : ''}
+                                    href={`/${page}`}
+                                >
                                     {page}
                                 </Link>
                             </Button>
