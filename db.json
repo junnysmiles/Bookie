@@ -14,6 +14,20 @@
             "isFinished": true,
             "rating": 4.5,
             "review": "The book was extremely heart wrenching and super well written. Really loved the way Colleen Hoover described the situations as though they were real."
+        },
+        {
+            "id": 2,
+            "book_name": "Verity",
+            "book_author": "Colleen Hoover",
+            "book_genre": "Romance Thriller",
+            "date_read": "11/21/2024, 11:30:00 PM",
+            "number_of_pages": 341,
+            "pages_read": 341, 
+            "percentage_read": 100,
+            "finished_book": "Yes", 
+            "isFinished": true,
+            "rating": 5,
+            "review": "This book really had me at the edge of my seat and had quite the twists and turns that really kept me wanting to read it. I genuinely loved this book and loved the creepiness it felt. Totally unexpected ending as well."
         }
     ]
 }
