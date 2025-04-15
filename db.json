@@ -1,0 +1,19 @@
+{
+    "collection":
+    [
+        {
+            "id": 1,
+            "book_name": "It Ends With Us",
+            "book_author": "Colleen Hoover",
+            "book_genre": "Drama Romance",
+            "date_read": "1/21/2025, 11:30:00 PM",
+            "number_of_pages": 367,
+            "pages_read": 367, 
+            "percentage_read": 100,
+            "finished_book": "Yes", 
+            "isFinished": true,
+            "rating": 4.5,
+            "review": "The book was extremely heart wrenching and super well written. Really loved the way Colleen Hoover described the situations as though they were real."
+        }
+    ]
+}
