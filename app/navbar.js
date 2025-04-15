@@ -30,6 +30,12 @@ export default function NavBar()
       setAnchorElNav(null);
     };
 
+    const isActive = (page) => {
+        if (page === 'collection') return pathname.startsWith('/collection');
+        if (page === 'admin') return pathname.startsWith('/admin');
+        return pathname === `/${page}`;
+      };
+
     return (
         <AppBar position="static" sx={{ backgroundColor: indigo[300]}}>
             <Container maxWidth="xl">
@@ -85,8 +91,9 @@ export default function NavBar()
                                 <Typography sx={{ 
                                         textAlign: 'center', 
                                         textTransform: 'capitalize',
-                                        fontWeight: pathname === `/${page}` ? 'bold' : 'normal',
-                                        color: pathname === `/${page}` ? indigo[300]: '',                                    }}>
+                                        fontWeight: isActive(page) ? 'bold' : 'normal',
+                                        color: isActive(page) ? indigo[300] : ''
+                                       }}>
                                     <Link href={`/${page}`}>
                                         {page}
                                     </Link>
@@ -124,8 +131,8 @@ export default function NavBar()
                                 color: 'white', 
                                 display: 'block', 
                                 textTransform: 'capitalize',
-                                fontWeight: pathname === `/${page}` ? 'bold' : 'normal',
-                                color: pathname === `/${page}` ? pink[100] : 'white',
+                                fontWeight: isActive(page) ? 'bold' : 'normal',
+                                color: isActive(page) ? pink[100] : 'white'
                             }}
                             >
                                 <Link href={`/${page}`}>
