@@ -12,7 +12,6 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import { indigo, pink } from '@mui/material/colors';
-import styles from "./styles.modules.css"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -129,10 +128,7 @@ export default function NavBar()
                                 color: pathname === `/${page}` ? pink[100] : 'white',
                             }}
                             >
-                                <Link 
-                                    className={ pathname === `/${page}` ? styles.active : ''}
-                                    href={`/${page}`}
-                                >
+                                <Link href={`/${page}`}>
                                     {page}
                                 </Link>
                             </Button>
