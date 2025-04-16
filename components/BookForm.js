@@ -1,4 +1,3 @@
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { indigo } from '@mui/material/colors';
 
@@ -9,8 +8,9 @@ export default function BookForm()
     return (
         <form>
             <div className='grid grid-cols-2 gap-4'>
-                {table_rows.map((value) => (
-                    <TextField   
+                {table_rows.map((value,i) => (
+                    <TextField
+                        key={value[i]}
                         sx={{
                             input: { color: 'white' }, // text color
                             label: { color: 'white' }, // label color
