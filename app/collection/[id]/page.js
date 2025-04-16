@@ -18,6 +18,7 @@ export default async function CollectionId({ params }) {
             <NotFound />
         )
     }
+    
     const book = await book_data.json()
 
     return (

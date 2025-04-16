@@ -17,6 +17,8 @@ import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
 
+export const revalidate = 60
+
 export default async function CollectionTable({ isAdmin = false }) {
     const book_data = await fetch("http://localhost:4000/collection")
     const books = await book_data.json()
