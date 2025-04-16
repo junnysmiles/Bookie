@@ -1,8 +1,7 @@
 import { Box } from "@mui/material"
-import Link from 'next/link';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import BackButton from '@/components/BackButton'
 import BookInformation from '@/components/BookInformation'
+import NotFound from '@/components/NotFound'
 
 export const metadata = {
     title: "Bookie - More Info"
@@ -12,6 +11,13 @@ export const metadata = {
 export default async function CollectionId({ params }) {
 
     const book_data = await fetch(`http://localhost:4000/collection/${params.id}`)
+    
+    if (!book_data.ok) {
+        // If the book doesn't exist, show 404 page
+        return (
+            <NotFound />
+        )
+    }
     const book = await book_data.json()
 
     return (
@@ -19,11 +25,7 @@ export default async function CollectionId({ params }) {
             <h1 className='font-sans font-bold text-4xl'>&quot;{book.book_name}&quot; - {book.book_author}</h1>
             <Box sx={{typography: "subtitle", fontSize: 24, marginTop: 2}}>ID: {params.id}</Box>
             <div className='pt-2'>
-                <Link href="/collection">
-                    <IconButton sx={{color: "white"}} size="large" aria-label="back">
-                        <ArrowBackIcon fontSize='large' />
-                    </IconButton>
-                </Link>
+                <BackButton href="/collection" />
             </div>
             <div>
                 <BookInformation book={book} />
