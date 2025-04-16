@@ -11,6 +11,7 @@ import ReadMoreIcon from '@mui/icons-material/ReadMore';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
 import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
@@ -80,25 +81,28 @@ export default async function CollectionTable({ isAdmin = false }) {
                         color: 'black',
                         marginTop: 3
                     }}>
-                        {books.map((book) => (
-                            <ListItem
-                                key={book.id}
-                                secondaryAction={
-                                            <IconButton edge="end" aria-label="edit">
-                                                <ReadMoreIcon />
-                                            </IconButton>
-                                }
-                            >
-                                <ListItemText
-                                    primary={
-                                        <Box display="flex" gap={4} width="100%">
-                                            <Box width="10%" sx={{fontWeight: 'bold'}}>{book.id}</Box>
-                                            <Box width="45%">{book.book_name}</Box>
-                                            <Box width="45%">{book.book_author}</Box>
-                                        </Box>
+                        {books.map((book, i) => (
+                            <>
+                                <ListItem
+                                    key={book.id}
+                                    secondaryAction={
+                                                <IconButton edge="end" aria-label="edit">
+                                                    <ReadMoreIcon />
+                                                </IconButton>
                                     }
-                                />
-                            </ListItem>
+                                >
+                                    <ListItemText
+                                        primary={
+                                            <Box display="flex" gap={4} width="100%">
+                                                <Box width="10%" sx={{fontWeight: 'bold'}}>{book.id}</Box>
+                                                <Box width="45%">{book.book_name}</Box>
+                                                <Box width="45%">{book.book_author}</Box>
+                                            </Box>
+                                        }
+                                    />
+                                </ListItem>
+                                {i !== books.length - 1 && <Divider component="li" />}
+                            </>
                         ))}
                 </List>
             )}
