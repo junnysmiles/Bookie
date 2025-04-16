@@ -10,7 +10,7 @@ export default function BookForm()
             <div className='grid grid-cols-2 gap-4'>
                 {table_rows.map((value,i) => (
                     <TextField
-                        key={value[i]}
+                        key={i}
                         sx={{
                             input: { color: 'white' }, // text color
                             label: { color: 'white' }, // label color
