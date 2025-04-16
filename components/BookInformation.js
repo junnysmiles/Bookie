@@ -6,6 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { indigo } from '@mui/material/colors';
 import Box from '@mui/material/Box';
+import RatingBar from '@/components/RatingBar'
 
 export default function BookInformation({ book })
 {
@@ -63,6 +64,10 @@ export default function BookInformation({ book })
                                             <CloseIcon className="text-red-600" />
                                         </>
                                     )
+                                ) : i === 6 ? (
+                                    <>
+                                        <RatingBar rating={book.rating} isReadOnly={true} />
+                                    </>
                                 ) : (
                                     bookInfo[i] ?? '—'
                                 )}

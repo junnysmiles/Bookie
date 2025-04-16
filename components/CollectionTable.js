@@ -12,10 +12,15 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 import Link from 'next/link';
 import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
+import RatingBar from '@/components/RatingBar'
 
 export const revalidate = 60
 
@@ -58,10 +63,46 @@ export default async function CollectionTable({ isAdmin = false }) {
                                     <TableCell>{book.date_read ? format(new Date(book.date_read), "MMMM d, yyyy @ h:mmaaa") : '—'}</TableCell>
                                     <TableCell>{book.number_of_pages}</TableCell>
                                     <TableCell>{book.pages_read}</TableCell>
-                                    <TableCell>{book.percentage_read}%</TableCell>
-                                    <TableCell>{book.finished_book}</TableCell>
-                                    <TableCell>{book.rating}</TableCell>
-                                    <TableCell align='center'>{book.review}</TableCell>
+                                    <TableCell>
+                                        <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+                                            <CircularProgress sx={{color: indigo[300]}} variant="determinate" value={book.percentage_read} />
+                                            <Box
+                                                sx={{
+                                                top: 0,
+                                                left: 0,
+                                                bottom: 0,
+                                                right: 0,
+                                                position: 'absolute',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                }}
+                                            >
+                                                <Typography
+                                                variant="caption"
+                                                component="div"
+                                                sx={{ color: 'text.secondary' }}
+                                                >
+                                                {book.percentage_read}%
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    </TableCell>
+                                    <TableCell>
+                                        {book.isFinished ? (
+                                            <>
+                                                <CheckIcon className="text-green-600" />
+                                            </>
+                                            ) : (
+                                            <>
+                                                <CloseIcon className="text-red-600" />
+                                            </>
+                                        )}
+                                    </TableCell>
+                                    <TableCell>
+                                        <RatingBar rating={book.rating} isReadOnly={true} />
+                                    </TableCell>
+                                    <TableCell align='left'>{book.review}</TableCell>
                                     <TableCell>                                            
                                         <IconButton edge="end" aria-label="edit">
                                                 <EditIcon />

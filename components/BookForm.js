@@ -8,12 +8,7 @@ export default function BookForm()
 
     return (
         <form>
-            <Stack
-                spacing={{ xs: 1, sm: 2 }}
-                direction="row"
-                useFlexGap
-                sx={{ flexWrap: 'wrap' }}
-            >
+            <div className='grid grid-cols-2 gap-4'>
                 {table_rows.map((value) => (
                     <TextField   
                         sx={{
@@ -35,7 +30,7 @@ export default function BookForm()
                         label={value} 
                         variant="outlined" />
                 ))}
-            </Stack>
+            </div>
         </form>
     )
 }
