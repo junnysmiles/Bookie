@@ -12,6 +12,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
+import Link from 'next/link';
 import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
@@ -82,13 +83,15 @@ export default async function CollectionTable({ isAdmin = false }) {
                         marginTop: 3
                     }}>
                         {books.map((book, i) => (
-                            <>
+                            <div key={book.id}>
                                 <ListItem
                                     key={book.id}
                                     secondaryAction={
-                                                <IconButton edge="end" aria-label="edit">
-                                                    <ReadMoreIcon />
-                                                </IconButton>
+                                        <Link href={`/collection/${book.id}`}>
+                                            <IconButton edge="end" aria-label="edit">
+                                                <ReadMoreIcon />
+                                            </IconButton>
+                                        </Link>
                                     }
                                 >
                                     <ListItemText
@@ -102,7 +105,7 @@ export default async function CollectionTable({ isAdmin = false }) {
                                     />
                                 </ListItem>
                                 {i !== books.length - 1 && <Divider component="li" />}
-                            </>
+                            </div>
                         ))}
                 </List>
             )}

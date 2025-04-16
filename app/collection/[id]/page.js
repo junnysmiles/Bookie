@@ -32,18 +32,12 @@ export default async function CollectionId({ params }) {
     )
 }
 
-export async function generateStaticParams()
-{
-    return [
-        {id: "1"},
-        {id: "2"},
-        // {id: "3"},
-        // {id: "4"},
-        // {id: "5"},
-        // {id: "6"},
-        // {id: "7"},
-        // {id: "8"},
-        // {id: "9"},
-        // {id: "10"},
-    ]
+export async function generateStaticParams() {
+    const res = await fetch('http://localhost:4000/collection');
+    const data = await res.json();
+
+    // Safely map only up to 10 items, or fewer if less than 10
+    return data.slice(0, 10).map((item) => ({
+        id: item.id.toString()
+    }));
 }
