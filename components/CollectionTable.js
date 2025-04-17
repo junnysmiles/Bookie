@@ -100,7 +100,7 @@ export default async function CollectionTable({ isAdmin = false }) {
                                         )}
                                     </TableCell>
                                     <TableCell>
-                                        <RatingBar rating={book.rating} isReadOnly={true} />
+                                        <RatingBar initialRating={book.rating} isReadOnly={true} />
                                     </TableCell>
                                     <TableCell align='left'>{book.review}</TableCell>
                                     <TableCell>                                            

@@ -1,33 +1,60 @@
 {
-    "collection":
-    [
-        {
-            "id": 1,
-            "book_name": "It Ends With Us",
-            "book_author": "Colleen Hoover",
-            "book_genre": "Drama Romance",
-            "date_read": "1/21/2025, 11:30:00 PM",
-            "number_of_pages": 367,
-            "pages_read": 367, 
-            "percentage_read": 100,
-            "finished_book": "Yes", 
-            "isFinished": true,
-            "rating": 4.5,
-            "review": "The book was extremely heart wrenching and super well written. Really loved the way Colleen Hoover described the situations as though they were real."
-        },
-        {
-            "id": 2,
-            "book_name": "Verity",
-            "book_author": "Colleen Hoover",
-            "book_genre": "Romance Thriller",
-            "date_read": "11/21/2024, 11:30:00 PM",
-            "number_of_pages": 341,
-            "pages_read": 341, 
-            "percentage_read": 100,
-            "finished_book": "Yes", 
-            "isFinished": true,
-            "rating": 5,
-            "review": "This book really had me at the edge of my seat and had quite the twists and turns that really kept me wanting to read it. I genuinely loved this book and loved the creepiness it felt. Totally unexpected ending as well."
-        }
-    ]
+  "collection": [
+    {
+      "id": "1",
+      "book_name": "It Ends With Us",
+      "book_author": "Colleen Hoover",
+      "book_genre": "Drama Romance",
+      "date_read": "1/21/2025, 11:30:00 PM",
+      "number_of_pages": 367,
+      "pages_read": 367,
+      "percentage_read": 100,
+      "finished_book": "Yes",
+      "isFinished": true,
+      "rating": 4.5,
+      "review": "The book was extremely heart wrenching and super well written. Really loved the way Colleen Hoover described the situations as though they were real."
+    },
+    {
+      "id": "2",
+      "book_name": "Verity",
+      "book_author": "Colleen Hoover",
+      "book_genre": "Romance Thriller",
+      "date_read": "11/21/2024, 11:30:00 PM",
+      "number_of_pages": 341,
+      "pages_read": 341,
+      "percentage_read": 100,
+      "finished_book": "Yes",
+      "isFinished": true,
+      "rating": 5,
+      "review": "This book really had me at the edge of my seat and had quite the twists and turns that really kept me wanting to read it. I genuinely loved this book and loved the creepiness it felt. Totally unexpected ending as well."
+    },
+    {
+      "id": "3",
+      "book_name": "All Of Us Villains",
+      "book_author": "Amanda Foody & Chrstine Lynn Herman",
+      "book_genre": "Fantasy Fiction",
+      "date_read": "November 27, 2024 @ 9:07 pm",
+      "number_of_pages": 384,
+      "pages_read": 384,
+      "percentage_read": 100,
+      "finished_book": "yes",
+      "isFinished": true,
+      "rating": "5",
+      "review": "Oh my goodness this book had me clutching it until the end. The twist in the middle of the book had me so sad and yearning for everyone to just be together happily in the end. There was not too much romance, but just enough. I was hooked. Also a heart wrenching book and I cannot wait to see what happens in the second book since it ends in a cliffhanger!"
+    },
+    {
+      "id": "4",
+      "book_name": "All Of Our Demise",
+      "book_author": "Amanda Foody & Chrstine Lynn Herman",
+      "book_genre": "Fantasy Fiction",
+      "date_read": "April 16, 2024 @ 9:12 pm",
+      "number_of_pages": 468,
+      "pages_read": 1,
+      "percentage_read": 1,
+      "finished_book": "no",
+      "isFinished": false,
+      "rating": null,
+      "review": "Will update my review once I have read it!"
+    }
+  ]
 }

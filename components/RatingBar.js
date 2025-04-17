@@ -4,9 +4,16 @@ import { styled } from '@mui/material/styles';
 import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useState } from 'react';
 
-export default function RatingBar({rating = 0, isReadOnly = false})
+export default function RatingBar({initialRating = 0, isReadOnly = false})
 {
+    const [rating, setRating] = useState(initialRating)
+
+    const handleChange = (event, newValue) => {
+        setRating(newValue);
+      };
+
     const StyledRating = styled(Rating)({
         '& .MuiRating-iconFilled': {
           color: '#ff6d75',
@@ -19,12 +26,22 @@ export default function RatingBar({rating = 0, isReadOnly = false})
     return (
         <>
             <StyledRating
-                name={isReadOnly ? 'customized-color readonly' : 'customized-colour'}
-                defaultValue={rating}
+                name='rating'
+                defaultValue={initialRating}
+                value={rating}
+                onChange={handleChange}
                 getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
                 precision={0.5}
                 icon={<FavoriteIcon fontSize="inherit" />}
-                emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+                emptyIcon={
+                    <FavoriteBorderIcon 
+                        fontSize="inherit" 
+                        sx={{
+                            stroke: 'white',
+                            strokeWidth: 1,
+                          }}
+                    />
+                }
                 readOnly={isReadOnly}
             />
         </>

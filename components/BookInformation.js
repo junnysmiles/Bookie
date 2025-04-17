@@ -47,7 +47,7 @@ export default function BookInformation({ book })
                                                 <Typography
                                                 variant="caption"
                                                 component="div"
-                                                sx={{ color: 'text.secondary' }}
+                                                sx={{ color: 'text.secondary', fontWeight: 'bold' }}
                                                 >
                                                 {book.percentage_read}%
                                                 </Typography>
@@ -66,7 +66,7 @@ export default function BookInformation({ book })
                                     )
                                 ) : i === 6 ? (
                                     <>
-                                        <RatingBar rating={book.rating} isReadOnly={true} />
+                                        <RatingBar initialRating={book.rating} isReadOnly={true} />
                                     </>
                                 ) : (
                                     bookInfo[i] ?? '—'

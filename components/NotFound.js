@@ -11,7 +11,7 @@ export default function NotFound()
                 <BackButton href="/collection" />
             </div>
             <Stack sx={{ width: '100%' }} spacing={2}>    
-                <Alert severity="error">Book ID found! Please go back.</Alert>
+                <Alert severity="error">Book ID not found! Please go back.</Alert>
             </Stack>
         </>
     )
