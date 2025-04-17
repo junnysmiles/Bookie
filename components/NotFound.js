@@ -3,7 +3,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import BackButton from '@/components/BackButton'
 
-export default function NotFound()
+export default function NotFound({id})
 {
     return (
         <>
@@ -11,7 +11,7 @@ export default function NotFound()
                 <BackButton href="/collection" />
             </div>
             <Stack sx={{ width: '100%' }} spacing={2}>    
-                <Alert severity="error">Book ID not found! Please go back.</Alert>
+                <Alert severity="error">Book ID {id} not found! Please go back.</Alert>
             </Stack>
         </>
     )

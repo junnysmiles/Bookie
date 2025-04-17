@@ -15,7 +15,7 @@ export default async function CollectionId({ params }) {
     if (!book_data.ok) {
         // If the book doesn't exist, show 404 page
         return (
-            <NotFound />
+            <NotFound id={params.id} />
         )
     }
     

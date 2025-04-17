@@ -21,14 +21,26 @@ import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
 import RatingBar from '@/components/RatingBar'
-
-export const revalidate = 60
+import { revalidatePath } from 'next/cache';
 
 export default async function CollectionTable({ isAdmin = false }) {
     const book_data = await fetch("http://localhost:4000/collection")
     const books = await book_data.json()
 
     const table_rows = ["ID", "Book Name", "Author", "Genre", "Date Read", "Number of Pages", "Pages Read", "Percentage Read", "Finished?", "Rating", "Review"]
+
+    async function deleteBook(deleteId)
+    {
+        'use server'
+
+        await fetch(`http://localhost:4000/collection/${deleteId}`, 
+            {method: "DELETE"}
+        )
+
+        revalidatePath('/collection')
+        revalidatePath(`/collection/${deleteId}`)
+        revalidatePath('/admin')
+    }
 
     return (
         <>
@@ -103,15 +115,17 @@ export default async function CollectionTable({ isAdmin = false }) {
                                         <RatingBar initialRating={book.rating} isReadOnly={true} />
                                     </TableCell>
                                     <TableCell align='left'>{book.review}</TableCell>
-                                    <TableCell>                                            
-                                        <IconButton edge="end" aria-label="edit">
-                                                <EditIcon />
-                                        </IconButton>
-                                    </TableCell>
                                     <TableCell>
                                         <IconButton edge="end" aria-label="edit">
-                                                <DeleteIcon />
-                                        </IconButton>
+                                                <EditIcon />
+                                        </IconButton>                                      
+                                    </TableCell>
+                                    <TableCell>
+                                        <form action={deleteBook.bind(null, book.id)}>
+                                            <IconButton type="submit" edge="end" aria-label="edit">
+                                                    <DeleteIcon />
+                                            </IconButton>
+                                        </form>
                                     </TableCell>
                                 </TableRow>
                             ))}
