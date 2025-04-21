@@ -21,26 +21,13 @@ import { indigo } from '@mui/material/colors';
 import { format } from 'date-fns';
 import { List, ListItem, ListItemText } from '@mui/material';
 import RatingBar from '@/components/RatingBar'
-import { revalidatePath } from 'next/cache';
+import { deleteBook } from '../actions'
 
 export default async function CollectionTable({ isAdmin = false }) {
     const book_data = await fetch("http://localhost:4000/collection")
     const books = await book_data.json()
 
     const table_rows = ["ID", "Book Name", "Author", "Genre", "Date Read", "Number of Pages", "Pages Read", "Percentage Read", "Finished?", "Rating", "Review"]
-
-    async function deleteBook(deleteId)
-    {
-        'use server'
-
-        await fetch(`http://localhost:4000/collection/${deleteId}`, 
-            {method: "DELETE"}
-        )
-
-        revalidatePath('/collection')
-        revalidatePath(`/collection/${deleteId}`)
-        revalidatePath('/admin')
-    }
 
     return (
         <>
