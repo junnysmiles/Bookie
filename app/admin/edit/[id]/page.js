@@ -1,22 +1,25 @@
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Link from 'next/link';
-import IconButton from '@mui/material/IconButton';
+import BackButton from '@/components/BackButton'
+import BookForm from '@/components/BookForm'
 
 export const metadata = {
     title: "Bookie - Edit Book"
 }
 
 
-export default function CollectionId({ params }) {
+export default async function CollectionId({ params }) {
+    const res = await fetch(`http://localhost:4000/collection/${params.id}`, {
+        cache: 'no-store'
+    })
+    const book = await res.json()
+
     return (
         <> 
             <h1 className='font-sans font-bold text-4xl'>Book Diary - Edit Book - {params.id}</h1>
             <div className='pt-2'>
-                <Link href="/admin">
-                    <IconButton sx={{color: "white"}} size="large" aria-label="back">
-                        <ArrowBackIcon fontSize='large' />
-                    </IconButton>
-                </Link>
+                <BackButton href="/admin" />
+            </div>
+            <div className='mt-7 mx-8'>
+                <BookForm book={book} isEdit={true} />
             </div>
         </>
     )

@@ -103,9 +103,11 @@ export default async function CollectionTable({ isAdmin = false }) {
                                     </TableCell>
                                     <TableCell align='left'>{book.review}</TableCell>
                                     <TableCell>
-                                        <IconButton edge="end" aria-label="edit">
-                                                <EditIcon />
-                                        </IconButton>                                      
+                                        <Link href={`/admin/edit/${book.id}`}>
+                                            <IconButton edge="end" aria-label="edit">
+                                                    <EditIcon />
+                                            </IconButton> 
+                                        </Link>                                     
                                     </TableCell>
                                     <TableCell>
                                         <form action={deleteBook.bind(null, book.id)}>
